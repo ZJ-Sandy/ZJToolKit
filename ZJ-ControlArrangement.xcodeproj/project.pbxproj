@@ -440,7 +440,7 @@
 		18EE37B022EA90BE009F15B6 /* ZJ-ControlArrangement */ = {
 			isa = PBXGroup;
 			children = (
-				18EE3A5F22EAF414009F15B6 /* home */,
+				18EE3A5F22EAF414009F15B6 /* ViewControllers */,
 				18EE3A1022EAA865009F15B6 /* Category */,
 				18EE3A0B22EA9920009F15B6 /* ZJUIHelper */,
 				18EE39F722EA98BB009F15B6 /* ZJHelper */,
@@ -1032,7 +1032,7 @@
 			path = CitySelect;
 			sourceTree = "<group>";
 		};
-		18EE3A5F22EAF414009F15B6 /* home */ = {
+		18EE3A5F22EAF414009F15B6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				18EE37B422EA90BE009F15B6 /* ViewController.h */,
@@ -1040,7 +1040,7 @@
 				18EE3A6022EAF44C009F15B6 /* SelectAddressVC.h */,
 				18EE3A6122EAF44C009F15B6 /* SelectAddressVC.m */,
 			);
-			path = home;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
