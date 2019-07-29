@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "ZJUIHelper.h"
 #import "SelectAddressVC.h"
+#import "SelectDataVC.h"
 
 @interface ViewController ()
 
@@ -40,6 +41,9 @@
         [ZJUIHelper showLoadingViewWith:@"ZJ欢迎大家使用"];
     } else if (indexPath.row == 2) {
         SelectAddressVC *vc = [[SelectAddressVC alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if (indexPath.row == 3) {
+        SelectDataVC *vc = [[SelectDataVC alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

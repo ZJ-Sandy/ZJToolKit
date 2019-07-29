@@ -63,6 +63,15 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0f]
 #define kIOS10_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0)
 #define kIOS11_OR_LATER @available(iOS 11.0, *)
 
+//字符串是否为空
+#define kStringIsEmpty(str) (str == nil || [str isKindOfClass:[NSNull class]] || [str length] < 1 ? YES : NO )
+
+#define ZStringIsEmpty(str) ([str isEqualToString:@"(null)"] || str == nil || [str isKindOfClass:[NSNull class]] || [str length] < 1 ? YES : NO )
+
+
+/** block */
+#define ZJ_BLOCK_EXEC(block, ...) if (block) { block(__VA_ARGS__); };
+
 #import "UIView_extra.h"
 #import "UIColor+GDRC.h"
 #import "NSString+GDRC.h"
