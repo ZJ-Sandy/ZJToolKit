@@ -1,0 +1,77 @@
+//
+//  PrefixHeader.pch
+//  ZJ-ControlArrangement
+//
+//  Created by 志杰 on 2019/7/26.
+//  Copyright © 2019 志杰. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+/** 弱引用 */
+#define ZJ_WEAK_SELF          __weak typeof(self) weakSelf = self;
+#define ZJ_WEAK_IFY(var)      __weak typeof(var) weak_##var = var;
+#define ZJ_STRONG_SELF        __strong typeof(weakSelf) strongSelf = weakSelf;
+#define ZJ_STRONG_IFY(var)    __strong typeof(var) strong_##var = var;
+/** 系统单例 简写 */
+#define ZJ_Application      [UIApplication sharedApplication]
+#define ZJ_Notification     [NSNotificationCenter defaultCenter]
+#define ZJ_UserDefaults     [NSUserDefaults standardUserDefaults]
+#define ZJ_FileManager      [NSFileManager defaultManager]
+
+/** 屏幕尺寸 */
+#define ZJ_SCREEN_WIDTH         [UIScreen mainScreen].bounds.size.width
+#define ZJ_SCREEN_HEIGHT        [UIScreen mainScreen].bounds.size.height
+#define ZJ_SCREEN_SIZE          [UIScreen mainScreen].bounds.size
+#define ZJ_SCREEN_BOUNDS        [UIScreen mainScreen].bounds
+
+#define Screen_Ratio_Width (ZJ_SCREEN_WIDTH / 375.0)
+
+// 判断是否为iPhone X 系列  这样写消除了在Xcode10上的警告。
+#define iPhoneX \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
+//判断 iPhoneXS Max，iPhoneXS，iPhoneXR，iPhoneX
+#define ZJ_isPhoneXSeries (((int)((ZJ_SCREEN_HEIGHT/ZJ_SCREEN_WIDTH)*100) == 216)?YES:NO)
+//X与其他屏幕的导航栏高度差
+#define ZJ_IsIphoneXNavBarMargin        (ZJ_isPhoneXSeries ? 24.0f : 0.0f)
+#define ZJ_SCREEN_IPHONEX_IGNORE_HEIGHT (ZJ_isPhoneXSeries ? 24+34 : 0)
+#define ZJ_SCREEN_IPHONEX_NAVGATION     (ZJ_isPhoneXSeries ? 88 : 64)
+#define ZJ_SCREEN_IPHONEX_TOP           (ZJ_isPhoneXSeries ? 44 : 0)
+#define ZJ_SCREEN_IPHONEX_BOTTOM        (ZJ_isPhoneXSeries ? 34 : 0)
+#define ZJ_SCREEN_SAFE_HEIGHT           (ZJ_SCREEN_HEIGHT - ZJ_SCREEN_IPHONEX_TOP - ZJ_SCREEN_IPHONEX_BOTTOM)
+#define ZJ_SCREEN_SCREEN_HEIGHT         (ZJ_SCREEN_HEIGHT - ZJ_SCREEN_IPHONEX_NAVGATION - ZJ_SCREEN_IPHONEX_BOTTOM)
+
+#define screenWidth ([UIScreen mainScreen].bounds.size.width)
+#define screenHeight ([UIScreen mainScreen].bounds.size.height)
+#define screenScale ([UIScreen mainScreen].scale)
+
+/** 颜色 */
+#define ZJ_COLOR_RGB(r, g, b)        [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:1]
+#define ZJ_COLOR_RGBA(r, g, b, a)    [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:(a)]
+#define ZJ_COLOR_HEX(rgbValue)       [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0f \
+green:((float)((rgbValue & 0xFF00) >> 8))/255.0f \
+blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0f]
+
+#pragma mark - 系统版本宏
+#define kIOS8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+#define kIOS9_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0)
+#define kIOS10_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0)
+#define kIOS11_OR_LATER @available(iOS 11.0, *)
+
+#import "UIView_extra.h"
+#import "UIColor+GDRC.h"
+#import "NSString+GDRC.h"
+#import "Masonry.h"
+#import "ZJConst.h"
+#import "MJRefresh.h"
+#import "UIButton+WebCache.h"
+#import "UIImageView+WebCache.h"
+#import "UITableViewCell+MKAdd.h"
+
+
+#endif /* PrefixHeader_pch */
